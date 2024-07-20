@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
-import ContactsForm from "../ContactForm/ContactForm"
-import ContactsList from "../ContactList/ContactList"
+import ContactForm from "../ContactForm/ContactForm"
+import ContactList from "../ContactList/ContactList"
 import SearchBox from "../SearchBox/SearchBox"
-import contactsData from "../../contacts.json"
+import contactData from "../../contact.json"
 
 export default function App() {
     const [contacts, setContacts] = useState(() => {
         const storageContacts = localStorage.getItem("contacts")
-        return storageContacts ? JSON.parse(storageContacts) : contactsData
+        return storageContacts ? JSON.parse(storageContacts) : contactData
     })
 
     const [filter, setFilter] = useState("")
@@ -33,9 +33,9 @@ export default function App() {
     return (
         <>
   <h1>Phonebook</h1>
-    <ContactsForm addContact={addContact} />
+    <ContactForm addContact={addContact} />
     <SearchBox filter={filter} onFilter={setFilter} />
-    <ContactsList contacts = {visibleContacts} deleteContact = {deleteContact} />
+    <ContactList contacts = {visibleContacts} deleteContact = {deleteContact} />
 </>
 
     )
